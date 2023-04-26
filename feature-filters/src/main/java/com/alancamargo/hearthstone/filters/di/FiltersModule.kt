@@ -1,5 +1,7 @@
 package com.alancamargo.hearthstone.filters.di
 
+import com.alancamargo.hearthstone.filters.data.local.FiltersLocalDataSource
+import com.alancamargo.hearthstone.filters.data.local.FiltersLocalDataSourceImpl
 import com.alancamargo.hearthstone.filters.data.remote.FiltersRemoteDataSource
 import com.alancamargo.hearthstone.filters.data.remote.FiltersRemoteDataSourceImpl
 import dagger.Binds
@@ -17,4 +19,10 @@ internal abstract class FiltersModule {
     abstract fun bindFiltersRemoteDataSource(
         impl: FiltersRemoteDataSourceImpl
     ): FiltersRemoteDataSource
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindFiltersLocalDataSource(
+        impl: FiltersLocalDataSourceImpl
+    ): FiltersLocalDataSource
 }

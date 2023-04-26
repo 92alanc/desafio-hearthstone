@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "FILTERS")
 internal data class DbFilters(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey val id: Long = 1,
     val factionsJson: String,
     val qualitiesJson: String,
     val racesJson: String,
