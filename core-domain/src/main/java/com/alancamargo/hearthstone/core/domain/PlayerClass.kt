@@ -1,6 +1,6 @@
 package com.alancamargo.hearthstone.core.domain
 
-enum class CardClass {
+enum class PlayerClass {
 
     DEATH_KNIGHT,
     DRUID,
