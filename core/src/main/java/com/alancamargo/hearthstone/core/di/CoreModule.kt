@@ -3,6 +3,8 @@ package com.alancamargo.hearthstone.core.di
 import android.content.Context
 import com.alancamargo.hearthstone.core.database.DatabaseProvider
 import com.alancamargo.hearthstone.core.database.DatabaseProviderImpl
+import com.alancamargo.hearthstone.core.log.Logger
+import com.alancamargo.hearthstone.core.log.LoggerImpl
 import com.alancamargo.hearthstone.core.network.ApiProvider
 import com.alancamargo.hearthstone.core.network.ApiProviderImpl
 import dagger.Module
@@ -27,4 +29,8 @@ internal object CoreModule {
     fun provideDatabaseProvider(
         @ApplicationContext context: Context
     ): DatabaseProvider = DatabaseProviderImpl(context)
+
+    @Provides
+    @Singleton
+    fun provideLogger(): Logger = LoggerImpl()
 }
