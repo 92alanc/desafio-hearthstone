@@ -47,6 +47,8 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':core-design')
+    implementation project(':core-domain')
+    implementation project(':core-data')
     implementation project(':navigation')
 
     implementation "$android_activity"
