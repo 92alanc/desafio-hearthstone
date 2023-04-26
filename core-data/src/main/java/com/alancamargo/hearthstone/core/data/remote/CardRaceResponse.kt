@@ -39,7 +39,7 @@ enum class CardRaceResponse {
     @SerialName("All")
     ALL,
 
-    @SerialName("Quilobar")
+    @SerialName("Quilboar")
     QUILBOAR,
 
     @SerialName("Naga")
