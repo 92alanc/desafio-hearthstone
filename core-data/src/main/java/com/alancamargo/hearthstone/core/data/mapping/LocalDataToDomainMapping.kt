@@ -8,6 +8,7 @@ fun DbCard.toDomain() = Card(
     name = name,
     type = type,
     quality = quality,
+    faction = faction,
     cost = cost,
     attack = attack,
     health = health,

@@ -9,6 +9,7 @@ data class CardResponse(
     @SerialName("name") val name: String,
     @SerialName("type") val type: String,
     @SerialName("rarity") val quality: String,
+    @SerialName("faction") val faction: String? = null,
     @SerialName("cost") val cost: Int,
     @SerialName("attack") val attack: Int,
     @SerialName("health") val health: Int,
