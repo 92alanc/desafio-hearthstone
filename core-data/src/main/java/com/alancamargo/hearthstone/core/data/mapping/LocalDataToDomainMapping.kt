@@ -1,9 +1,9 @@
 package com.alancamargo.hearthstone.core.data.mapping
 
-import com.alancamargo.hearthstone.core.data.remote.CardResponse
+import com.alancamargo.hearthstone.core.data.local.DbCard
 import com.alancamargo.hearthstone.core.domain.Card
 
-fun CardResponse.toDomain() = Card(
+fun DbCard.toDomain() = Card(
     id = id,
     name = name,
     type = type,

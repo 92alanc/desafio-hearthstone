@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="factions">Factions</string>
+    <string name="qualities">Qualities</string>
+    <string name="races">Races</string>
+    <string name="types">Types</string>
+    <string name="player_classes">Player classes</string>
+</resources>
