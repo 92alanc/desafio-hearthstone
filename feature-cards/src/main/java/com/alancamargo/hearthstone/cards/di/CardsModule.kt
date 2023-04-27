@@ -1,5 +1,7 @@
 package com.alancamargo.hearthstone.cards.di
 
+import com.alancamargo.hearthstone.cards.data.local.CardsLocalDataSource
+import com.alancamargo.hearthstone.cards.data.local.CardsLocalDataSourceImpl
 import com.alancamargo.hearthstone.cards.data.remote.CardsRemoteDataSource
 import com.alancamargo.hearthstone.cards.data.remote.CardsRemoteDataSourceImpl
 import dagger.Binds
@@ -15,4 +17,8 @@ internal abstract class CardsModule {
     @Binds
     @ViewModelScoped
     abstract fun bindCardsRemoteDataSource(impl: CardsRemoteDataSourceImpl): CardsRemoteDataSource
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindCardsLocalDataSource(impl: CardsLocalDataSourceImpl): CardsLocalDataSource
 }
