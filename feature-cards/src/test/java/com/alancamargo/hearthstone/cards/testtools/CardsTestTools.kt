@@ -1,6 +1,5 @@
 package com.alancamargo.hearthstone.cards.testtools
 
-import com.alancamargo.hearthstone.core.data.mapping.toDb
 import com.alancamargo.hearthstone.core.domain.Card
 
 fun stubCard() = Card(
