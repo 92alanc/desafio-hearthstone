@@ -8,6 +8,7 @@ import com.alancamargo.hearthstone.core.log.Logger
 import com.alancamargo.hearthstone.filters.domain.model.FiltersResult
 import com.alancamargo.hearthstone.filters.domain.usecase.ClearFiltersCacheUseCase
 import com.alancamargo.hearthstone.filters.domain.usecase.GetFiltersUseCase
+import com.alancamargo.hearthstone.filters.ui.mapping.toFilterBlockList
 import com.alancamargo.hearthstone.filters.ui.model.UiFiltersError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -47,9 +48,7 @@ internal class FiltersViewModel @Inject constructor(
                 _state.update { state -> state.onError(UiFiltersError.GENERIC) }
             }.collect { result ->
                 when (result) {
-                    is FiltersResult.Success -> _state.update {
-                        it.onFiltersReceived(result.filters)
-                    }
+                    is FiltersResult.Success -> handleSuccess(result)
 
                     is FiltersResult.NetworkError -> _state.update {
                         it.onError(UiFiltersError.NETWORK)
@@ -84,5 +83,10 @@ internal class FiltersViewModel @Inject constructor(
         viewModelScope.launch(dispatcher) {
             _action.emit(FiltersViewAction.ShowAppInfo)
         }
+    }
+
+    private fun handleSuccess(result: FiltersResult.Success) {
+        val filters = result.filters.toFilterBlockList()
+        _state.update { it.onFiltersReceived(filters) }
     }
 }

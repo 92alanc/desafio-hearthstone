@@ -12,7 +12,7 @@ import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.core.extensions.observeViewModelFlow
 import com.alancamargo.hearthstone.filters.R
 import com.alancamargo.hearthstone.filters.databinding.ActivityFiltersBinding
-import com.alancamargo.hearthstone.filters.ui.adapter.FilterAdapter
+import com.alancamargo.hearthstone.filters.ui.adapter.FilterBlockAdapter
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewAction
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewModel
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewState
@@ -27,32 +27,8 @@ internal class FiltersActivity : AppCompatActivity() {
     private val binding: ActivityFiltersBinding
         get() = _binding!!
 
-    private val factionsAdapter by lazy {
-        FilterAdapter(FilterType.FACTION) { filter, type ->
-            viewModel.onFilterClicked(filter, type)
-        }
-    }
-
-    private val qualitiesAdapter by lazy {
-        FilterAdapter(FilterType.QUALITY) { filter, type ->
-            viewModel.onFilterClicked(filter, type)
-        }
-    }
-
-    private val racesAdapter by lazy {
-        FilterAdapter(FilterType.RACE) { filter, type ->
-            viewModel.onFilterClicked(filter, type)
-        }
-    }
-
-    private val typesAdapter by lazy {
-        FilterAdapter(FilterType.TYPE) { filter, type ->
-            viewModel.onFilterClicked(filter, type)
-        }
-    }
-
-    private val playerClassesAdapter by lazy {
-        FilterAdapter(FilterType.PLAYER_CLASS) { filter, type ->
+    private val adapter by lazy {
+        FilterBlockAdapter { filter, type ->
             viewModel.onFilterClicked(filter, type)
         }
     }
@@ -94,11 +70,7 @@ internal class FiltersActivity : AppCompatActivity() {
 
     private fun setUpUi() = with(binding) {
         setSupportActionBar(toolbar)
-        recyclerViewFactions.adapter = factionsAdapter
-        recyclerViewQualities.adapter = qualitiesAdapter
-        recyclerViewRaces.adapter = racesAdapter
-        recyclerViewTypes.adapter = typesAdapter
-        recyclerViewPlayerClasses.adapter = playerClassesAdapter
+        recyclerView.adapter = adapter
         btTryAgain.setOnClickListener {
             viewModel.loadFilters()
         }
@@ -106,17 +78,8 @@ internal class FiltersActivity : AppCompatActivity() {
 
     private fun onStateChanged(state: FiltersViewState) = with(state) {
         binding.shimmerContainer.isVisible = isLoading
-
-        binding.scrollView.isVisible = !isLoading && filters != null
-
-        filters?.let {
-            factionsAdapter.submitList(it.factions)
-            qualitiesAdapter.submitList(it.qualities)
-            racesAdapter.submitList(it.races)
-            typesAdapter.submitList(it.types)
-            playerClassesAdapter.submitList(it.playerClasses)
-        }
-
+        binding.recyclerView.isVisible = !isLoading && filters != null
+        filters?.let(adapter::submitList)
         binding.groupError.isVisible = error != null
 
         error?.let {

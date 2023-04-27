@@ -7,6 +7,7 @@ import com.alancamargo.hearthstone.filters.domain.model.FiltersResult
 import com.alancamargo.hearthstone.filters.domain.usecase.ClearFiltersCacheUseCase
 import com.alancamargo.hearthstone.filters.domain.usecase.GetFiltersUseCase
 import com.alancamargo.hearthstone.filters.testtools.stubFilters
+import com.alancamargo.hearthstone.filters.ui.mapping.toFilterBlockList
 import com.alancamargo.hearthstone.filters.ui.model.UiFiltersError
 import com.google.common.truth.Truth.assertThat
 import io.mockk.every
@@ -52,9 +53,10 @@ class FiltersViewModelTest {
             viewModel.loadFilters()
 
             // THEN
+            val filterBlocks = filters.toFilterBlockList()
             val expected = listOf(
                 FiltersViewState(isLoading = true),
-                FiltersViewState(filters = filters)
+                FiltersViewState(filters = filterBlocks)
             )
             assertThat(states).containsAtLeastElementsIn(expected)
         }

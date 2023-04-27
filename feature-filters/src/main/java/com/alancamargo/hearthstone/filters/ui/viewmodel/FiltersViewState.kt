@@ -1,11 +1,11 @@
 package com.alancamargo.hearthstone.filters.ui.viewmodel
 
-import com.alancamargo.hearthstone.filters.domain.model.Filters
+import com.alancamargo.hearthstone.filters.ui.model.UiFilterBlock
 import com.alancamargo.hearthstone.filters.ui.model.UiFiltersError
 
 internal data class FiltersViewState(
     val isLoading: Boolean = false,
-    val filters: Filters? = null,
+    val filters: List<UiFilterBlock>? = null,
     val error: UiFiltersError? = null
 ) {
 
@@ -16,7 +16,7 @@ internal data class FiltersViewState(
 
     fun onFinishedLoading() = copy(isLoading = false)
 
-    fun onFiltersReceived(filters: Filters) = copy(
+    fun onFiltersReceived(filters: List<UiFilterBlock>) = copy(
         filters = filters,
         error = null
     )
