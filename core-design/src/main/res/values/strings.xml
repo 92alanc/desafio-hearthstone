@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Desafio Hearthstone</string>
+    <string name="message_network_error">Please check your internet connection and try again</string>
+    <string name="message_generic_error">Something went wrong. Please try again later</string>
+    <string name="ok">OK</string>
+    <string name="try_again">Try again</string>
 </resources>

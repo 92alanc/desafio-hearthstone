@@ -6,7 +6,6 @@ ext {
     android_core = "androidx.core:core-ktx:$android_core_version"
     android_espresso_contrib = "androidx.test.espresso:espresso-contrib:$android_espresso_version"
     android_espresso_core = "androidx.test.espresso:espresso-core:$android_espresso_version"
-    android_hilt_compiler = "androidx.hilt:hilt-compiler:$android_hilt_compiler_version"
     android_material = "com.google.android.material:material:$android_material_version"
     android_splash_screen = "androidx.core:core-splashscreen:$android_splash_screen_version"
     android_test_runner = "androidx.test:runner:$android_test_runner_version"

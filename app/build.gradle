@@ -54,6 +54,7 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':core-design')
+    implementation project(':feature-filters')
 
     implementation "$android_appcompat"
     implementation "$android_core"
