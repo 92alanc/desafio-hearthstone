@@ -61,4 +61,12 @@ dependencies {
 
     kapt "$hilt_compiler"
     kapt "$room_compiler"
+
+    testImplementation project(':core-test')
+
+    testImplementation "$coroutines_test"
+    testImplementation "$junit"
+    testImplementation "$mockk_android"
+    testImplementation "$truth"
+    testImplementation "$turbine"
 }
