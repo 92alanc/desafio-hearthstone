@@ -98,7 +98,9 @@ internal class FiltersActivity : AppCompatActivity() {
     }
 
     private fun onStateChanged(state: FiltersViewState) = with(state) {
-        // TODO: handle loading state
+        binding.shimmerContainer.isVisible = isLoading
+
+        binding.scrollView.isVisible = !isLoading && filters != null
 
         filters?.let {
             factionsAdapter.submitList(it.factions)

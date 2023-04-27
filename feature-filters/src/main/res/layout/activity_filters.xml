@@ -127,6 +127,19 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+    
+    <FrameLayout
+        android:id="@+id/shimmerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_16"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <include layout="@layout/shimmer_filters" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imgError"
