@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type_format">Type: %s</string>
+    <string name="quality_format">Quality: %s</string>
+    <string name="faction_format">Faction: %s</string>
+    <string name="cost_format">Cost: %d</string>
+    <string name="attack_format">Attack: %d</string>
+    <string name="health_format">Health: %d</string>
+    <string name="race_format">Race: %s</string>
+    <string name="player_class_format">Player class: %s</string>
+</resources>

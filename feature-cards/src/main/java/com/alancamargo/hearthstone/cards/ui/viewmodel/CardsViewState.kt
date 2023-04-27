@@ -1,11 +1,11 @@
 package com.alancamargo.hearthstone.cards.ui.viewmodel
 
+import com.alancamargo.hearthstone.cards.ui.model.UiCard
 import com.alancamargo.hearthstone.cards.ui.model.UiCardsError
-import com.alancamargo.hearthstone.core.domain.Card
 
 internal data class CardsViewState(
     val isLoading: Boolean = false,
-    val cards: List<Card>? = null,
+    val cards: List<UiCard>? = null,
     val error: UiCardsError? = null
 ) {
 
@@ -16,7 +16,7 @@ internal data class CardsViewState(
 
     fun onFinishedLoading() = copy(isLoading = false)
 
-    fun onCardsReceived(cards: List<Card>) = copy(
+    fun onCardsReceived(cards: List<UiCard>) = copy(
         cards = cards,
         error = null
     )
