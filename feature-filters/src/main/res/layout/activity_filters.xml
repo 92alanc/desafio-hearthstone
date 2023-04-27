@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:title="@string/filters"
-            app:titleCentered="true"
-            app:menu="@menu/menu_filters"/>
+            app:titleTextAppearance="@style/TextAppearance.Material3.DisplayMedium"
+            app:menu="@menu/menu_filters" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
