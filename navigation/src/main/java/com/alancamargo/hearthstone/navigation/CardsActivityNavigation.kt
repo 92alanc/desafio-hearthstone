@@ -5,5 +5,5 @@ import com.alancamargo.hearthstone.core.domain.FilterType
 
 interface CardsActivityNavigation {
 
-    fun startActivity(context: Context, filterType: FilterType)
+    fun startActivity(context: Context, filter: String, type: FilterType)
 }

@@ -16,6 +16,7 @@ import com.alancamargo.hearthstone.filters.ui.adapter.FilterAdapter
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewAction
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewModel
 import com.alancamargo.hearthstone.filters.ui.viewmodel.FiltersViewState
+import com.alancamargo.hearthstone.navigation.CardsActivityNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -63,6 +64,9 @@ internal class FiltersActivity : AppCompatActivity() {
 
     @Inject
     lateinit var dialogueHelper: DialogueHelper
+
+    @Inject
+    lateinit var cardsActivityNavigation: CardsActivityNavigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -147,8 +151,11 @@ internal class FiltersActivity : AppCompatActivity() {
     }
 
     private fun navigateToCardsList(filter: String, type: FilterType) {
-        // TODO: handle navigation to cards list
-        toastHelper.showToast(text = "Filter: $filter - type: $type")
+        cardsActivityNavigation.startActivity(
+            context = this,
+            filter = filter,
+            type = type
+        )
     }
 
     private fun showFiltersCacheClearedToast() {
