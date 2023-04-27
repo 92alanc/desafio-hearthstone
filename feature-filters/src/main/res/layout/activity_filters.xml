@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_filter_block"
-        tools:itemCount="4" />
+        tools:itemCount="5" />
     
     <FrameLayout
         android:id="@+id/shimmerContainer"

@@ -13,7 +13,7 @@
         style="@style/TextAppearance.Material3.HeadlineSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="@string/factions" />
+        tools:text="@sample/filter_blocks.json/data/header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

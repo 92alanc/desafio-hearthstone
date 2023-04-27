@@ -1,0 +1,19 @@
+{
+  "data": [
+    { "filter": "Horde" },
+    { "filter": "Alliance" },
+    { "filter": "Neutral" },
+    { "filter": "Hero" },
+    { "filter": "Minion" },
+    { "filter": "Spell" },
+    { "filter": "Orc" },
+    { "filter": "Undead" },
+    { "filter": "Murloc" },
+    { "filter": "Common" },
+    { "filter": "Free" },
+    { "filter": "Rare" },
+    { "filter": "Death Knight" },
+    { "filter": "Druid" },
+    { "filter": "Hunter" }
+  ]
+}

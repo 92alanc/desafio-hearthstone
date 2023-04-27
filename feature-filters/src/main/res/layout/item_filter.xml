@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/spacing_8"
             android:gravity="center"
-            tools:text="Test Filter" />
+            tools:text="@sample/filters.json/data/filter" />
 
     </FrameLayout>
 
