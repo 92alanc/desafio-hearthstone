@@ -7,6 +7,7 @@ import com.alancamargo.hearthstone.filters.domain.model.FiltersResult
 import com.alancamargo.hearthstone.filters.domain.repository.FiltersRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.io.IOException
 import javax.inject.Inject
 
 internal class FiltersRepositoryImpl @Inject constructor(
@@ -16,7 +17,11 @@ internal class FiltersRepositoryImpl @Inject constructor(
 ) : FiltersRepository {
 
     override fun getFilters(): Flow<FiltersResult> = flow {
-        val remoteResult = remoteDataSource.getFilters()
+        val remoteResult = try {
+            remoteDataSource.getFilters()
+        } catch (e: IOException) {
+            FiltersResult.NetworkError
+        }
 
         if (remoteResult is FiltersResult.Success) {
             logger.debug("Saving filters...")

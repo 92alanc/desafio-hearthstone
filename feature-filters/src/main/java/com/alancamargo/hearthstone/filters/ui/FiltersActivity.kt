@@ -95,6 +95,9 @@ internal class FiltersActivity : AppCompatActivity() {
         recyclerViewRaces.adapter = racesAdapter
         recyclerViewTypes.adapter = typesAdapter
         recyclerViewPlayerClasses.adapter = playerClassesAdapter
+        btTryAgain.setOnClickListener {
+            viewModel.loadFilters()
+        }
     }
 
     private fun onStateChanged(state: FiltersViewState) = with(state) {

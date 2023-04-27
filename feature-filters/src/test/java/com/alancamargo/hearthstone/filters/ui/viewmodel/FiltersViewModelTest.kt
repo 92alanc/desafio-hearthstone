@@ -79,25 +79,7 @@ class FiltersViewModelTest {
     }
 
     @Test
-    fun `when use case throws IOException getFilters should set correct states`() {
-        collector.test { states, _ ->
-            // GIVEN
-            every { mockGetFiltersUseCase() } returns flow { throw IOException() }
-
-            // WHEN
-            viewModel.loadFilters()
-
-            // THEN
-            val expected = listOf(
-                FiltersViewState(isLoading = true),
-                FiltersViewState(error = UiFiltersError.NETWORK)
-            )
-            assertThat(states).containsAtLeastElementsIn(expected)
-        }
-    }
-
-    @Test
-    fun `when use case throws generic exception getFilters should set correct states`() {
+    fun `when use case throws exception getFilters should set correct states`() {
         collector.test { states, _ ->
             // GIVEN
             every { mockGetFiltersUseCase() } returns flow { throw IllegalStateException() }

@@ -20,7 +20,6 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,18 +44,15 @@ internal class FiltersViewModel @Inject constructor(
                 _state.update { it.onFinishedLoading() }
             }.catch {
                 logger.error(it)
-
-                val error = if (it is IOException) {
-                    UiFiltersError.NETWORK
-                } else {
-                    UiFiltersError.GENERIC
-                }
-
-                _state.update { state -> state.onError(error) }
+                _state.update { state -> state.onError(UiFiltersError.GENERIC) }
             }.collect { result ->
                 when (result) {
                     is FiltersResult.Success -> _state.update {
                         it.onFiltersReceived(result.filters)
+                    }
+
+                    is FiltersResult.NetworkError -> _state.update {
+                        it.onError(UiFiltersError.NETWORK)
                     }
 
                     is FiltersResult.GenericError -> _state.update {
