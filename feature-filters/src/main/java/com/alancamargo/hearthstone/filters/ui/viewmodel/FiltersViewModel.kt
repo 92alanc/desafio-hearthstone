@@ -3,6 +3,7 @@ package com.alancamargo.hearthstone.filters.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alancamargo.hearthstone.core.di.IoDispatcher
+import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.core.log.Logger
 import com.alancamargo.hearthstone.filters.domain.model.FiltersResult
 import com.alancamargo.hearthstone.filters.domain.usecase.ClearFiltersCacheUseCase
@@ -77,9 +78,9 @@ internal class FiltersViewModel @Inject constructor(
         }
     }
 
-    fun onFilterClicked(filter: String) {
+    fun onFilterClicked(filter: String, type: FilterType) {
         viewModelScope.launch(dispatcher) {
-            _action.emit(FiltersViewAction.NavigateToCardsList(filter))
+            _action.emit(FiltersViewAction.NavigateToCardsList(filter, type))
         }
     }
 

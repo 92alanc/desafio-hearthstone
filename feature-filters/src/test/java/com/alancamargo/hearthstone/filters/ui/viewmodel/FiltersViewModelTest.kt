@@ -1,5 +1,6 @@
 package com.alancamargo.hearthstone.filters.ui.viewmodel
 
+import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.core.log.Logger
 import com.alancamargo.hearthstone.core.test.viewmodel.ViewModelFlowCollector
 import com.alancamargo.hearthstone.filters.domain.model.FiltersResult
@@ -161,10 +162,11 @@ class FiltersViewModelTest {
         collector.test { _, actions ->
             // WHEN
             val filter = "My Filter"
-            viewModel.onFilterClicked(filter)
+            val type = FilterType.FACTION
+            viewModel.onFilterClicked(filter, type)
 
             // THEN
-            val expected = FiltersViewAction.NavigateToCardsList(filter)
+            val expected = FiltersViewAction.NavigateToCardsList(filter, type)
             assertThat(actions).contains(expected)
         }
     }

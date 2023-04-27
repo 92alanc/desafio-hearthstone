@@ -3,10 +3,12 @@ package com.alancamargo.hearthstone.filters.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.filters.databinding.ItemFilterBinding
 
 internal class FilterAdapter(
-    private val onItemClicked: (String) -> Unit
+    private val filterType: FilterType,
+    private val onItemClicked: (String, FilterType) -> Unit
 ) : ListAdapter<String, FilterViewHolder>(FilterDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
@@ -17,6 +19,6 @@ internal class FilterAdapter(
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         val filter = getItem(position)
-        holder.bindTo(filter)
+        holder.bindTo(filter, filterType)
     }
 }

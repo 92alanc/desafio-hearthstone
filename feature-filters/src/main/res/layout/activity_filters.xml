@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.FiltersActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbarLayout"
@@ -124,5 +125,38 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/imgError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
+        app:layout_constraintBottom_toTopOf="@+id/txtError"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:src="@drawable/ic_network_error"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtError"
+        style="@style/TextAppearance.Material3.BodyLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:layout_marginHorizontal="@dimen/spacing_16"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/imgError"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/message_network_error"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="imgError, txtError" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
