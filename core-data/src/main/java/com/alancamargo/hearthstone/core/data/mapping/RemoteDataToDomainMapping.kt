@@ -7,6 +7,7 @@ fun CardResponse.toDomain() = Card(
     id = id,
     name = name,
     type = type,
+    quality = quality,
     cost = cost,
     attack = attack,
     health = health,

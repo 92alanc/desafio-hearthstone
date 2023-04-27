@@ -7,6 +7,7 @@ fun Card.toDb() = DbCard(
     id = id,
     name = name,
     type = type,
+    quality = quality,
     cost = cost,
     attack = attack,
     health = health,
