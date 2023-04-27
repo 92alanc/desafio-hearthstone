@@ -5,4 +5,6 @@
     <string name="races">Races</string>
     <string name="types">Types</string>
     <string name="player_classes">Player classes</string>
+    <string name="app_info_label">App info</string>
+    <string name="app_info">App developed by Alan Camargo</string>
 </resources>
