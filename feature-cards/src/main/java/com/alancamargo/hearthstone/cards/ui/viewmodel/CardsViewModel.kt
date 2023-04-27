@@ -69,7 +69,7 @@ internal class CardsViewModel @Inject constructor(
             val action = card.imageUrl?.let {
                 CardsViewAction.ShowCardImage(it)
             } ?: run {
-                CardsViewAction.ShowNoImageAvailableToast
+                CardsViewAction.ShowCardDetails(card)
             }
 
             _action.emit(action)

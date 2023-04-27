@@ -10,14 +10,15 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_8"
+        android:background="@color/light_blue">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtFilter"
             style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/spacing_8"
             android:gravity="center"
             tools:text="@sample/filters.json/data/filter" />
 

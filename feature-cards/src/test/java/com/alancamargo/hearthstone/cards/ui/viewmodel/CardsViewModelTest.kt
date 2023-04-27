@@ -180,14 +180,14 @@ class CardsViewModelTest {
     }
 
     @Test
-    fun `when card does not have image onCardClicked should send ShowNoImageAvailableToast action`() {
+    fun `when card does not have image onCardClicked should send ShowCardDetails action`() {
         collector.test { _, actions ->
             // WHEN
             val card = stubCard()
             viewModel.onCardClicked(card)
 
             // THEN
-            val expected = CardsViewAction.ShowNoImageAvailableToast
+            val expected = CardsViewAction.ShowCardDetails(card)
             assertThat(actions).contains(expected)
         }
     }

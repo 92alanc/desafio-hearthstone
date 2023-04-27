@@ -10,7 +10,7 @@ internal class CardViewHolder(
 ) : ViewHolder(binding.root) {
 
     fun bindTo(card: Card) = with(binding) {
-        // TODO: handle views
+        txtName.text = card.name
         root.setOnClickListener { onItemClicked(card) }
     }
 }
