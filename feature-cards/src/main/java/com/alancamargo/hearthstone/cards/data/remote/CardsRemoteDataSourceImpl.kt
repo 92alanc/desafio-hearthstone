@@ -29,7 +29,11 @@ internal class CardsRemoteDataSourceImpl @Inject constructor(
                         it.name
                     }.map { it.toDomain() }
 
-                    CardListResult.Success(cards)
+                    if (cards.isEmpty()) {
+                        CardListResult.GenericError
+                    } else {
+                        CardListResult.Success(cards)
+                    }
                 } ?: CardListResult.GenericError
             } else {
                 CardListResult.GenericError

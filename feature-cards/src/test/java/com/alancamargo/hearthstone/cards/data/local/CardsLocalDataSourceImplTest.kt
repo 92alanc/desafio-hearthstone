@@ -3,6 +3,7 @@ package com.alancamargo.hearthstone.cards.data.local
 import com.alancamargo.hearthstone.cards.data.database.CardsDao
 import com.alancamargo.hearthstone.cards.domain.model.CardListResult
 import com.alancamargo.hearthstone.cards.testtools.stubCard
+import com.alancamargo.hearthstone.cards.testtools.stubDbCardList
 import com.alancamargo.hearthstone.core.domain.FilterType
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
@@ -67,9 +68,23 @@ class CardsLocalDataSourceImplTest {
     }
 
     @Test
-    fun `when database returns cards getCards should return Success`() {
+    fun `when database returns empty list getCards should return GenericError`() {
         // GIVEN
         coEvery { mockDao.getCardsByFaction(faction = any()) } returns emptyList()
+
+        // WHEN
+        val result = runBlocking {
+            localDataSource.getCards(type = FilterType.FACTION, filter = "Test Filter")
+        }
+
+        // THEN
+        assertThat(result).isInstanceOf(CardListResult.GenericError::class.java)
+    }
+
+    @Test
+    fun `when database returns cards getCards should return Success`() {
+        // GIVEN
+        coEvery { mockDao.getCardsByFaction(faction = any()) } returns stubDbCardList()
 
         // WHEN
         val result = runBlocking {

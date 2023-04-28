@@ -23,7 +23,12 @@ internal class CardsLocalDataSourceImpl @Inject constructor(
 
         return databaseResponse?.let {
             val cards = it.map { card -> card.toDomain() }
-            CardListResult.Success(cards)
+
+            if (cards.isEmpty()) {
+                CardListResult.GenericError
+            } else {
+                CardListResult.Success(cards)
+            }
         } ?: CardListResult.GenericError
     }
 

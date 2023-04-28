@@ -2,6 +2,7 @@ package com.alancamargo.hearthstone.cards.data.remote
 
 import com.alancamargo.hearthstone.cards.data.api.CardsApi
 import com.alancamargo.hearthstone.cards.domain.model.CardListResult
+import com.alancamargo.hearthstone.cards.testtools.stubCardResponseList
 import com.alancamargo.hearthstone.core.domain.FilterType
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
@@ -18,11 +19,28 @@ class CardsRemoteDataSourceImplTest {
     private val remoteDataSource = CardsRemoteDataSourceImpl(mockApi)
 
     @Test
-    fun `when api returns success getCards should return Success`() {
+    fun `when api returns empty list getCards should return GenericError`() {
         // GIVEN
         coEvery {
             mockApi.getCards(category = any(), filter = any())
         } returns Response.success(emptyList())
+
+        // WHEN
+        val result = runBlocking {
+            remoteDataSource.getCards(type = FilterType.FACTION, filter = "Alan")
+        }
+
+        // THEN
+        assertThat(result).isInstanceOf(CardListResult.GenericError::class.java)
+    }
+
+    @Test
+    fun `when api returns cards getCards should return Success`() {
+        // GIVEN
+        val cards = stubCardResponseList()
+        coEvery {
+            mockApi.getCards(category = any(), filter = any())
+        } returns Response.success(cards)
 
         // WHEN
         val result = runBlocking {
