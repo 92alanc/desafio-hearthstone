@@ -12,7 +12,6 @@ import androidx.core.view.isVisible
 import com.alancamargo.hearthstone.cards.R
 import com.alancamargo.hearthstone.cards.databinding.ActivityCardListBinding
 import com.alancamargo.hearthstone.cards.ui.adapter.CardAdapter
-import com.alancamargo.hearthstone.cards.ui.fragments.CardImageDialogue
 import com.alancamargo.hearthstone.cards.ui.viewmodel.CardsViewAction
 import com.alancamargo.hearthstone.cards.ui.viewmodel.CardsViewModel
 import com.alancamargo.hearthstone.cards.ui.viewmodel.CardsViewState
@@ -38,7 +37,7 @@ internal class CardListActivity : AppCompatActivity() {
     private val args by args<Args>()
     private val viewModel by viewModels<CardsViewModel>()
 
-    private val adapter by lazy { CardAdapter(viewModel::onCardClicked) }
+    private val adapter = CardAdapter()
 
     @Inject
     lateinit var toastHelper: ToastHelper
@@ -93,20 +92,9 @@ internal class CardListActivity : AppCompatActivity() {
 
     private fun onAction(action: CardsViewAction) {
         when (action) {
-            is CardsViewAction.ShowCardImage -> showCardImage(action.imageUrl)
             is CardsViewAction.Finish -> finish()
             is CardsViewAction.ShowCardsCacheClearedToast -> showCardsCacheClearedToast()
             is CardsViewAction.ShowErrorClearingCardsCacheToast -> showErrorClearingCardsCacheToast()
-        }
-    }
-
-    private fun showCardImage(imageUrl: String) {
-        val fragment = supportFragmentManager.findFragmentByTag(DIALOGUE_TAG)
-
-        if (fragment == null) {
-            val args = CardImageDialogue.Args(imageUrl)
-            val dialogue = CardImageDialogue.newInstance(args)
-            dialogue.show(supportFragmentManager, DIALOGUE_TAG)
         }
     }
 

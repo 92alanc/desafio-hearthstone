@@ -7,7 +7,6 @@ import com.alancamargo.hearthstone.cards.domain.usecase.ClearCardsCacheUseCase
 import com.alancamargo.hearthstone.cards.domain.usecase.GetCardsUseCase
 import com.alancamargo.hearthstone.cards.ui.model.UiCardsError
 import com.alancamargo.hearthstone.core.di.IoDispatcher
-import com.alancamargo.hearthstone.core.domain.Card
 import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.core.log.Logger
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,13 +61,6 @@ internal class CardsViewModel @Inject constructor(
                     }
                 }
             }
-        }
-    }
-
-    fun onCardClicked(card: Card) {
-        viewModelScope.launch(dispatcher) {
-            val action = CardsViewAction.ShowCardImage(card.imageUrl)
-            _action.emit(action)
         }
     }
 
