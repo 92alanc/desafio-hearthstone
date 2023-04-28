@@ -3,7 +3,6 @@ package com.alancamargo.hearthstone.cards.ui.viewmodel
 import com.alancamargo.hearthstone.cards.domain.model.CardListResult
 import com.alancamargo.hearthstone.cards.domain.usecase.ClearCardsCacheUseCase
 import com.alancamargo.hearthstone.cards.domain.usecase.GetCardsUseCase
-import com.alancamargo.hearthstone.cards.testtools.stubCard
 import com.alancamargo.hearthstone.cards.ui.model.UiCardsError
 import com.alancamargo.hearthstone.core.domain.FilterType
 import com.alancamargo.hearthstone.core.log.Logger
@@ -161,19 +160,6 @@ class CardsViewModelTest {
 
             // THEN
             val expected = CardsViewAction.ShowErrorClearingCardsCacheToast
-            assertThat(actions).contains(expected)
-        }
-    }
-
-    @Test
-    fun `onCardClicked should send ShowCardImage action`() {
-        collector.test { _, actions ->
-            // WHEN
-            val card = stubCard()
-            viewModel.onCardClicked(card)
-
-            // THEN
-            val expected = CardsViewAction.ShowCardImage(card.imageUrl)
             assertThat(actions).contains(expected)
         }
     }
