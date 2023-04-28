@@ -10,6 +10,7 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Test
 import retrofit2.Response
+import java.io.IOException
 
 class FiltersRemoteDataSourceImplTest {
 
@@ -56,5 +57,19 @@ class FiltersRemoteDataSourceImplTest {
 
         // THEN
         assertThat(result).isInstanceOf(FiltersResult.GenericError::class.java)
+    }
+
+    @Test
+    fun `when api throws IOException getFilters should return NetworkError`() {
+        // GIVEN
+        coEvery {
+            mockApi.getFilters()
+        } throws IOException()
+
+        // WHEN
+        val result = runBlocking { remoteDataSource.getFilters() }
+
+        // THEN
+        assertThat(result).isInstanceOf(FiltersResult.NetworkError::class.java)
     }
 }

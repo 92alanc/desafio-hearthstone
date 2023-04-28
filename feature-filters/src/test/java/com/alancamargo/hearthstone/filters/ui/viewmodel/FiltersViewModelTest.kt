@@ -63,6 +63,24 @@ class FiltersViewModelTest {
     }
 
     @Test
+    fun `when use case returns NetworkError getFilters should set correct states`() {
+        collector.test { states, _ ->
+            // GIVEN
+            every { mockGetFiltersUseCase() } returns flowOf(FiltersResult.NetworkError)
+
+            // WHEN
+            viewModel.loadFilters()
+
+            // THEN
+            val expected = listOf(
+                FiltersViewState(isLoading = true),
+                FiltersViewState(error = UiFiltersError.NETWORK)
+            )
+            assertThat(states).containsAtLeastElementsIn(expected)
+        }
+    }
+
+    @Test
     fun `when use case returns GenericError getFilters should set correct states`() {
         collector.test { states, _ ->
             // GIVEN

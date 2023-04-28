@@ -13,7 +13,6 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
-import java.io.IOException
 
 class FiltersRepositoryImplTest {
 
@@ -99,25 +98,6 @@ class FiltersRepositoryImplTest {
             result.test {
                 val actual = awaitItem()
                 assertThat(actual).isInstanceOf(FiltersResult.Success::class.java)
-                awaitComplete()
-            }
-        }
-    }
-
-    @Test
-    fun `when remote throws IOException and local fails getFilters should return NetworkError`() {
-        runBlocking {
-            // GIVEN
-            coEvery { mockRemoteDataSource.getFilters() } throws IOException()
-            coEvery { mockLocalDataSource.getFilters() } returns FiltersResult.GenericError
-
-            // WHEN
-            val result = repository.getFilters()
-
-            // THEN
-            result.test {
-                val actual = awaitItem()
-                assertThat(actual).isInstanceOf(FiltersResult.NetworkError::class.java)
                 awaitComplete()
             }
         }

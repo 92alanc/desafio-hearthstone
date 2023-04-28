@@ -4,9 +4,10 @@ import com.alancamargo.hearthstone.core.data.local.DbCard
 import com.alancamargo.hearthstone.core.domain.Card
 
 fun Card.toDb() = DbCard(
-    id = id,
     name = name,
     type = type,
+    quality = quality,
+    faction = faction,
     cost = cost,
     attack = attack,
     health = health,
