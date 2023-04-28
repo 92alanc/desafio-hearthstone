@@ -8,4 +8,5 @@
     <string name="health_format">Health: %d</string>
     <string name="race_format">Race: %s</string>
     <string name="player_class_format">Player class: %s</string>
+    <string name="clear_cards_cache">Clear cards cache</string>
 </resources>
