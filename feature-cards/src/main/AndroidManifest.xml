@@ -3,7 +3,7 @@
 
     <application>
         <activity android:name=".ui.CardListActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
