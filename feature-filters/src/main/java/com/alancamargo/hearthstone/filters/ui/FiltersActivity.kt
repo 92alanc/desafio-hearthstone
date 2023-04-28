@@ -1,5 +1,7 @@
 package com.alancamargo.hearthstone.filters.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +11,7 @@ import androidx.core.view.isVisible
 import com.alancamargo.hearthstone.core.design.tools.DialogueHelper
 import com.alancamargo.hearthstone.core.design.tools.ToastHelper
 import com.alancamargo.hearthstone.core.domain.FilterType
+import com.alancamargo.hearthstone.core.extensions.createIntent
 import com.alancamargo.hearthstone.core.extensions.observeViewModelFlow
 import com.alancamargo.hearthstone.filters.R
 import com.alancamargo.hearthstone.filters.databinding.ActivityFiltersBinding
@@ -127,5 +130,11 @@ internal class FiltersActivity : AppCompatActivity() {
 
     private fun showErrorClearingFiltersCacheToast() {
         toastHelper.showToast(R.string.error_clearing_filters_cache)
+    }
+
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return context.createIntent<FiltersActivity>()
+        }
     }
 }

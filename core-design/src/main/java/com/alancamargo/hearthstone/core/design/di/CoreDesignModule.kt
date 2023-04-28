@@ -14,7 +14,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
 @InstallIn(ActivityComponent::class)
-internal object CoreDesignModule {
+object CoreDesignModule {
 
     @Provides
     @ActivityScoped

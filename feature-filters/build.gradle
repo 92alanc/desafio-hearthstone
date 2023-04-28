@@ -14,7 +14,7 @@ android {
         minSdk min_sdk_version
         targetSdk target_sdk_version
 
-        testInstrumentationRunner "com.alancamargo.tubecalculator.core.test.runner.InstrumentedTestRunner"
+        testInstrumentationRunner "com.alancamargo.hearthstone.core.test.runner.InstrumentedTestRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -47,6 +47,18 @@ android {
     testOptions {
         animationsDisabled true
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src/main/assets', 'src/androidTest/assets'
+            }
+        }
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
     }
 }
 
@@ -81,4 +93,6 @@ dependencies {
     androidTestImplementation "$android_espresso_core"
     androidTestImplementation "$mockk_android"
     androidTestImplementation "$truth"
+
+    kaptAndroidTest "$hilt_compiler"
 }
