@@ -2,8 +2,7 @@ package com.alancamargo.hearthstone.cards.testtools
 
 import com.alancamargo.hearthstone.core.domain.Card
 
-fun stubCard(imageUrl: String? = null) = Card(
-    id = "",
+fun stubCard() = Card(
     name = "",
     type = "",
     quality = "",
@@ -14,5 +13,5 @@ fun stubCard(imageUrl: String? = null) = Card(
     text = "",
     race = "",
     playerClass = "",
-    imageUrl = imageUrl
+    imageUrl = ""
 )

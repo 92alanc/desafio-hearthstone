@@ -97,7 +97,7 @@ class CardsLocalDataSourceImplTest {
     @Test
     fun `when card exists saveCard should update existing record`() {
         // GIVEN
-        coEvery { mockDao.getCardsCount(id = any()) } returns 1
+        coEvery { mockDao.getCardsCount(name = any()) } returns 1
 
         // WHEN
         val card = stubCard()
@@ -110,7 +110,7 @@ class CardsLocalDataSourceImplTest {
     @Test
     fun `when card does not exist saveCard should insert a new record`() {
         // GIVEN
-        coEvery { mockDao.getCardsCount(id = any()) } returns 0
+        coEvery { mockDao.getCardsCount(name = any()) } returns 0
 
         // WHEN
         val card = stubCard()

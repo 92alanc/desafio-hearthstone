@@ -5,16 +5,15 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CardResponse(
-    @SerialName("cardId") val id: String,
-    @SerialName("name") val name: String,
-    @SerialName("type") val type: String,
-    @SerialName("rarity") val quality: String,
+    @SerialName("name") val name: String? = null,
+    @SerialName("type") val type: String? = null,
+    @SerialName("rarity") val quality: String? = null,
     @SerialName("faction") val faction: String? = null,
-    @SerialName("cost") val cost: Int,
-    @SerialName("attack") val attack: Int,
-    @SerialName("health") val health: Int,
-    @SerialName("text") val text: String,
-    @SerialName("race") val race: String,
-    @SerialName("playerClass") val playerClass: String,
+    @SerialName("cost") val cost: Int? = null,
+    @SerialName("attack") val attack: Int? = null,
+    @SerialName("health") val health: Int? = null,
+    @SerialName("text") val text: String? = null,
+    @SerialName("race") val race: String? = null,
+    @SerialName("playerClass") val playerClass: String? = null,
     @SerialName("img") val imageUrl: String? = null
 )

@@ -166,28 +166,14 @@ class CardsViewModelTest {
     }
 
     @Test
-    fun `when card has image onCardClicked should send ShowCardImage action`() {
-        collector.test { _, actions ->
-            // WHEN
-            val imageUrl = "https://test.com/racionais"
-            val card = stubCard(imageUrl)
-            viewModel.onCardClicked(card)
-
-            // THEN
-            val expected = CardsViewAction.ShowCardImage(imageUrl)
-            assertThat(actions).contains(expected)
-        }
-    }
-
-    @Test
-    fun `when card does not have image onCardClicked should send ShowCardDetails action`() {
+    fun `onCardClicked should send ShowCardImage action`() {
         collector.test { _, actions ->
             // WHEN
             val card = stubCard()
             viewModel.onCardClicked(card)
 
             // THEN
-            val expected = CardsViewAction.ShowCardDetails(card)
+            val expected = CardsViewAction.ShowCardImage(card.imageUrl)
             assertThat(actions).contains(expected)
         }
     }

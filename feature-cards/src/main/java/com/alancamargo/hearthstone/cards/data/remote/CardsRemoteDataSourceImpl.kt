@@ -23,7 +23,12 @@ internal class CardsRemoteDataSourceImpl @Inject constructor(
 
             return if (response.isSuccessful) {
                 response.body()?.let { body ->
-                    val cards = body.map { it.toDomain() }
+                    val cards = body.filterNot {
+                        it.imageUrl == null
+                    }.distinctBy {
+                        it.name
+                    }.map { it.toDomain() }
+
                     CardListResult.Success(cards)
                 } ?: CardListResult.GenericError
             } else {

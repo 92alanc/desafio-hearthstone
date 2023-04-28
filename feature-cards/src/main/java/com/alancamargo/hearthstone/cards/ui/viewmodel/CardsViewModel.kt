@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.alancamargo.hearthstone.cards.domain.model.CardListResult
 import com.alancamargo.hearthstone.cards.domain.usecase.ClearCardsCacheUseCase
 import com.alancamargo.hearthstone.cards.domain.usecase.GetCardsUseCase
-import com.alancamargo.hearthstone.cards.ui.mapping.toUi
 import com.alancamargo.hearthstone.cards.ui.model.UiCardsError
 import com.alancamargo.hearthstone.core.di.IoDispatcher
 import com.alancamargo.hearthstone.core.domain.Card
@@ -50,7 +49,7 @@ internal class CardsViewModel @Inject constructor(
             }.collect { result ->
                 when (result) {
                     is CardListResult.Success -> _state.update {
-                        val cards = result.cards.map { card -> card.toUi() }
+                        val cards = result.cards
                         it.onCardsReceived(cards)
                     }
 
@@ -68,12 +67,7 @@ internal class CardsViewModel @Inject constructor(
 
     fun onCardClicked(card: Card) {
         viewModelScope.launch(dispatcher) {
-            val action = card.imageUrl?.let {
-                CardsViewAction.ShowCardImage(it)
-            } ?: run {
-                CardsViewAction.ShowCardDetails(card)
-            }
-
+            val action = CardsViewAction.ShowCardImage(card.imageUrl)
             _action.emit(action)
         }
     }

@@ -9,4 +9,7 @@
     <string name="race_format">Race: %s</string>
     <string name="player_class_format">Player class: %s</string>
     <string name="clear_cards_cache">Clear cards cache</string>
+    <string name="cards_cache_cleared">Cards cache cleared</string>
+    <string name="error_clearing_cards_cache">Error clearing cards cache</string>
+    <string name="content_description_card_image">The image of the card</string>
 </resources>

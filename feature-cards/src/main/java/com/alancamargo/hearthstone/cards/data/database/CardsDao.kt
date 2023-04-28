@@ -33,6 +33,6 @@ internal interface CardsDao {
     @Query("DELETE FROM CARDS")
     suspend fun deleteCards()
 
-    @Query("SELECT COUNT() FROM CARDS WHERE id = :id")
-    suspend fun getCardsCount(id: String): Int
+    @Query("SELECT COUNT() FROM CARDS WHERE name = :name")
+    suspend fun getCardsCount(name: String): Int
 }

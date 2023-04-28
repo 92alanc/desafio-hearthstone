@@ -6,7 +6,7 @@ import com.alancamargo.hearthstone.core.data.local.DbCard
 
 @Database(
     entities = [DbCard::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 internal abstract class CardsDatabase : RoomDatabase() {

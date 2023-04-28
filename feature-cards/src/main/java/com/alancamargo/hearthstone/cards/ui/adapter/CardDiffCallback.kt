@@ -6,7 +6,7 @@ import com.alancamargo.hearthstone.core.domain.Card
 internal object CardDiffCallback : DiffUtil.ItemCallback<Card>() {
 
     override fun areItemsTheSame(oldItem: Card, newItem: Card): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.name == newItem.name
     }
 
     override fun areContentsTheSame(oldItem: Card, newItem: Card): Boolean {

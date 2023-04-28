@@ -30,7 +30,7 @@ internal class CardsLocalDataSourceImpl @Inject constructor(
     override suspend fun saveCard(card: Card) {
         val dbCard = card.toDb()
 
-        if (dao.getCardsCount(dbCard.id) > 0) {
+        if (dao.getCardsCount(dbCard.name) > 0) {
             dao.updateCard(dbCard)
         } else {
             dao.insertCard(dbCard)

@@ -4,7 +4,6 @@ import com.alancamargo.hearthstone.core.data.local.DbCard
 import com.alancamargo.hearthstone.core.domain.Card
 
 fun DbCard.toDomain() = Card(
-    id = id,
     name = name,
     type = type,
     quality = quality,
